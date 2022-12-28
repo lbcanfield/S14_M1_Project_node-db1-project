@@ -2,7 +2,7 @@ const db = require('../../data/db-config')
 
 exports.checkAccountPayload = (request, response, next) => {
      const { name, budget } = request.body
-     if (!name || !budget) {
+     if (name === undefined || budget === undefined) {
           next({ status: 400, message: "name and budget are required" })
      }
      else if (typeof (budget) !== 'number' || isNaN(budget)) {
